@@ -34,3 +34,75 @@ width: 100%;
 height: 100%;
 pointer-events: none;    /* So the map remains interactive */
 }
+#map svg circle, .legend > div {
+  pointer-events: all; /* Enable pointer events for circles */
+  --color-departures: steelblue;
+--color-arrivals: darkorange;
+--color: color-mix(
+  in oklch,
+  var(--color-departures) calc(100% * var(--departure-ratio)),
+  var(--color-arrivals)
+);
+fill: var(--color);
+}
+header {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+  }
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  header label {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+  #time-filter {
+    margin-left: auto; /* push slider to the right */
+    display: flex;
+    flex-direction: column; /* stack slider + time text */
+    font-size: 0.9em;
+  }
+  
+  #selected-time {
+    font-weight: bold;
+  }
+  
+  #any-time {
+    margin-left: auto;
+    color: #666;
+    font-style: italic;
+  }
+  
+  #time-slider {
+    color: blue;
+    width: 250px;
+  }
+  
+  .legend {
+    display: flex;
+    gap: 1em;
+    margin-block: 1em;
+  }
+  
+  .legend > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.9rem;
+  }
+  
+  /* Create the colored square */
+  .legend > div::before {
+    content: "";
+    width: 1.2em;
+    height: 1.2em;
+    background: var(--color);
+    border: 1px solid #333;
+    border-radius: 0.2em;
+  }
+  
